@@ -1,83 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-02-17T12:00:51 AWST" name="Suite" finished-at="2021-02-17T12:01:00 AWST" duration-ms="8891">
+  <suite name="Suite" duration-ms="15228" started-at="2021-02-18T09:58:14Z" finished-at="2021-02-18T09:58:29Z">
     <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:Cucumberoptions.TestRunner@48a242ce]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
     </groups>
-    <test started-at="2021-02-17T12:00:51 AWST" name="Test" finished-at="2021-02-17T12:01:00 AWST" duration-ms="8891">
-      <class name="TestngPractise.Homepage">
-        <test-method is-config="true" signature="openbrowser()[pri:0, instance:TestngPractise.Homepage@6a1d204a]" started-at="2021-02-17T12:00:51 AWST" name="openbrowser" finished-at="2021-02-17T12:00:57 AWST" duration-ms="5751" status="PASS">
+    <test name="Validating User login" duration-ms="15228" started-at="2021-02-18T09:58:14Z" finished-at="2021-02-18T09:58:29Z">
+      <class name="Cucumberoptions.TestRunner">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:Cucumberoptions.TestRunner@48a242ce]" name="setUpClass" is-config="true" duration-ms="743" started-at="2021-02-18T17:58:14Z" finished-at="2021-02-18T17:58:14Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- openbrowser -->
-        <test-method signature="homepge(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:TestngPractise.Homepage@6a1d204a]" started-at="2021-02-17T12:00:57 AWST" name="homepge" data-provider="gethomedata" finished-at="2021-02-17T12:00:58 AWST" duration-ms="1600" status="PASS">
+        </test-method> <!-- setUpClass -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:Cucumberoptions.TestRunner@48a242ce]" name="feature" duration-ms="14194" started-at="2021-02-18T17:58:15Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2021-02-18T17:58:29Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Test]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[rsoundrapandi@gmail.com]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[RWFzd2FyaUAyMg==]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Female]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[02012022]]>
+                <![CDATA[Login into Application]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- homepge -->
-        <test-method signature="homepge(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:TestngPractise.Homepage@6a1d204a]" started-at="2021-02-17T12:00:58 AWST" name="homepge" data-provider="gethomedata" finished-at="2021-02-17T12:00:59 AWST" duration-ms="976" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Test1]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[rsoundrapandi1@gmail.com]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[RWFzd2FyaUAyMg==]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Female]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[02012023]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:Cucumberoptions.TestRunner@48a242ce]" name="tearDownClass" is-config="true" duration-ms="7" started-at="2021-02-18T17:58:29Z" finished-at="2021-02-18T17:58:29Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- homepge -->
-        <test-method is-config="true" signature="closebrowser()[pri:0, instance:TestngPractise.Homepage@6a1d204a]" started-at="2021-02-17T12:00:59 AWST" name="closebrowser" finished-at="2021-02-17T12:01:00 AWST" duration-ms="425" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- closebrowser -->
-      </class> <!-- TestngPractise.Homepage -->
-    </test> <!-- Test -->
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- Cucumberoptions.TestRunner -->
+    </test> <!-- Validating User login -->
   </suite> <!-- Suite -->
 </testng-results>
