@@ -72,9 +72,9 @@ public void closebrowser() {
 
 @DataProvider
 
-public Object[][] gethomedata() {
+public Object[][] gethomedata() throws IOException {
 	
- Object[][] dataval=LandingPage.getData();
+ Object[][] dataval=LandingPage.getExcelData();
  
  return dataval;
  

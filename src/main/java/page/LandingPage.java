@@ -1,7 +1,17 @@
 package page;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Base64;
+import java.util.Iterator;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.NumberToTextConverter;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -126,8 +136,93 @@ public class LandingPage {
 				return data;
 
 	}
+	
+	
+	public static Object[][]  getExcelData() throws IOException{   
+		
+		Object[][] data=null;
+		
+		//String [][] data = null;
+
+	FileInputStream fis= new FileInputStream("C:\\Users\\Soundar\\Desktop\\testdata.xlsx");
+	
+	XSSFWorkbook workbook=new XSSFWorkbook(fis);
+	
+	int count=workbook.getNumberOfSheets();
+	
+	System.out.println(count);
+	
+	for (int i=0;i<count;i++) {
+		
+		String sheetname=workbook.getSheetName(i);
+		
+		if(sheetname.equalsIgnoreCase("data")) {
+			
+			XSSFSheet sheet=workbook.getSheetAt(i);
+			XSSFRow Firstrow=sheet.getRow(0);
+			int rowCount1=sheet.getPhysicalNumberOfRows();
+			int cellCount=Firstrow.getLastCellNum();
+			System.out.println(rowCount1);
+			
+			Iterator<Row> row=sheet.rowIterator();
+			
+			data=new Object[rowCount1][cellCount];
+			while(row.hasNext()) {
+				
+					Row rows =row.next();
+					
+					int k= rows.getRowNum();
+					
+				System.out.println(k);
+				
+				Iterator<Cell> cell=rows.cellIterator();
+				
+				while (cell.hasNext()) {
+					
+					Cell c=cell.next();
+					
+					int l=c.getColumnIndex();
+					
+					System.out.println(l);
+					
+					if(c.getCellType()==CellType.STRING)
+						
+					{
+					
+						data[k][l]=(c.getStringCellValue());
+					
+					}
+					else
+					{
+						data[k][l]=(NumberToTextConverter.toText(c.getNumericCellValue()));
+					}
+				
+					
+					System.out.println(data[k][l]);
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+					
+					
+				}
+				
+				
+			}	
+	
+		}
+	workbook.close();
+	
+	return data;
 
 
+}
+	
 }
 	
 
