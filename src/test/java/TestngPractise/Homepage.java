@@ -1,6 +1,9 @@
 package TestngPractise;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.IOException;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,14 +21,16 @@ import resources.Base;
 public class Homepage extends Base {
 	
 	public WebDriver driver;
+	public Properties prop;
 
 	public static Logger log =LogManager.getLogger(Homepage.class.getName());
 	
 @BeforeTest
 
 public void openbrowser() throws IOException {
-
+	prop=getProperties();
 	driver=launchbrowser();
+	
 	log.info("HI");
 	driver.get("https://rahulshettyacademy.com/angularpractice/");
 	log.info("Test sucessfully1");
@@ -53,6 +58,7 @@ public void homepge(String user,String email,String pwd,String genderval,String 
 		H.enterdob().sendKeys(date);
 		log.info("Test sucessfully7");
 		H.button();
+		assertEquals(123, 1234);
 		}
 		catch (Exception e) {
 			System.out.println("Error message is displayed");
@@ -74,7 +80,7 @@ public void closebrowser() {
 
 public Object[][] gethomedata() throws IOException {
 	
- Object[][] dataval=LandingPage.getExcelData();
+Object[][] dataval=LandingPage.getExcelData(prop.getProperty("excelpath"),prop.getProperty("sheetName"));
  
  return dataval;
  

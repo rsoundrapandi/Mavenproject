@@ -1,7 +1,11 @@
 package resources;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -15,15 +19,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Base {
 	
 	public WebDriver driver;
-	public Properties p;
+	public Properties prop;
+	
+public Properties getProperties() throws IOException {
+	
+	 prop=new Properties();
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\Data.properties");
+		prop.load(fis);
+		return prop;
+		
+}
 	
 	
+
 public WebDriver launchbrowser() throws IOException {
 	
-	 p=new Properties();
-	FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\java\\resources\\Data.properties");
-	p.load(fis);
-	String browserName=p.getProperty("browser");
+
+	
+	String browserName=prop.getProperty("browser");
 	
 	System.out.println(browserName);
 
@@ -53,9 +66,13 @@ public WebDriver launchbrowser() throws IOException {
 	
 	public String getScreenShotPath(String testCaseName,WebDriver driver) throws IOException
 	{
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy h-m-s");
+		DateFormat dateFormater = new SimpleDateFormat("dd-MM-yyyy");
+	    Date date = new Date();
 		TakesScreenshot ts=(TakesScreenshot) driver;
 		File source =ts.getScreenshotAs(OutputType.FILE);
-		String destinationFile = System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
+		String destinationFile = System.getProperty("user.dir")+"\\reports-"+dateFormater.format(date)+"\\"+testCaseName+"-"+dateFormat.format(date)+".png";
 		FileUtils.copyFile(source,new File(destinationFile));
 		return destinationFile;
 

@@ -2,25 +2,34 @@ package Stepdefinitions;
 
 
 
-//import org.junit.runner.RunWith;
+import static org.testng.Assert.assertEquals;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import page.LandingPage;
 import resources.Base;
 
 //@RunWith(Cucumber.class)
 public class Stepdefinition extends Base {
-	@Given("^Initialize the browser$")
+	
+	public WebDriver driver;
+	public Properties prop;
+	
+	@Before
     public void initialize_the_browser() throws Throwable {
-		
+		prop=getProperties();
 		driver=launchbrowser();
        
     }
 	
-	 @And("^Navigate to URL \"([^\"]*)\"$")
+	 @Given("^Navigate to URL \"([^\"]*)\"$")
 	    public void navigate_to_url_something(String strArg1) throws Throwable {
 	        driver.get(strArg1);
 	    }
@@ -36,14 +45,15 @@ public class Stepdefinition extends Base {
 		H.enterEmployment().click();
 		H.enterdob().sendKeys(dob);
     	H.button();
+    	
 		
     }
     
    
     @Then("^Validate the successful message is displayed$")
     public void validate_the_successful_message_is_displayed() throws Throwable {
-        
-    	System.out.println("Tester456");
+
+    	System.out.println("Success");
     
     }
 
@@ -51,7 +61,8 @@ public class Stepdefinition extends Base {
 
    
 
-    @And("^Close browsers$")
+    @After
+    
     public void close_browsers() throws Throwable {
     	
     	driver.quit();

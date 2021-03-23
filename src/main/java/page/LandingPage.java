@@ -21,6 +21,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+
 public class LandingPage {
 	
 	public WebDriver driver;
@@ -138,25 +139,25 @@ public class LandingPage {
 	}
 	
 	
-	public static Object[][]  getExcelData() throws IOException{   
+	public static Object[][]  getExcelData(String excelpath, String sheetName) throws IOException{   
 		
 		Object[][] data=null;
 		
 		//String [][] data = null;
 
-	FileInputStream fis= new FileInputStream("C:\\Users\\Soundar\\Desktop\\testdata.xlsx");
+	FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+excelpath);
 	
 	XSSFWorkbook workbook=new XSSFWorkbook(fis);
 	
 	int count=workbook.getNumberOfSheets();
 	
-	System.out.println(count);
+	//System.out.println(count);
 	
 	for (int i=0;i<count;i++) {
 		
 		String sheetname=workbook.getSheetName(i);
 		
-		if(sheetname.equalsIgnoreCase("data")) {
+		if(sheetname.equalsIgnoreCase(sheetName)) {
 			
 			XSSFSheet sheet=workbook.getSheetAt(i);
 			XSSFRow Firstrow=sheet.getRow(0);
